@@ -1,8 +1,4 @@
 
----
-
-# 📜 `docs/security-report.md`
-
 # 🌐 Network Monitoring Security Report
 
 ## 🔒 Overview
