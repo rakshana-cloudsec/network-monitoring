@@ -24,8 +24,6 @@ The goal is to enhance **network visibility**, detect **suspicious anomalies**, 
 
 ## 🚀 Usage
 1. Clone this repository:
-```bash
-```
 ---
 Start the observability stack (SigNoz + Otel Collector):
 docker-compose up -d
