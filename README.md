@@ -48,8 +48,8 @@ http://localhost:3000
 - ├── docs/
 - │   └── security-report.md    # Detailed report
 - └── images/
--     └── signoz-dashboard.png
--     └── wireshark-capture.png
+- |   └── signoz-dashboard.png
+- |   └── wireshark-capture.png
 
 
 ## 📘 Documentation
