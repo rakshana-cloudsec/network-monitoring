@@ -1,47 +1,73 @@
-# 📡 Real-Time Network Traffic Monitoring with Wireshark & SigNoz
+# 🌐 Real-Time Network Traffic Monitoring
 
-This individual research lab focuses on capturing and analyzing real-time network traffic using **Wireshark** and **SigNoz**, with telemetry collected via **OpenTelemetry**. The goal is to detect anomalies, visualize system behavior, and support early-stage threat identification.
+## 🔒 Overview
+This project demonstrates **real-time network traffic monitoring** by combining:  
+- **Wireshark** & **tcpdump** for packet capture  
+- **SigNoz** & **OpenTelemetry** for telemetry dashboards  
 
+The goal is to enhance **network visibility**, detect **suspicious anomalies**, and provide actionable insights for **incident response**.
+
+## ⚙️ Features
+- 📡 Deep packet inspection with Wireshark and tcpdump  
+- 📊 SigNoz dashboards deployed via Docker Compose  
+- 🔎 Telemetry streaming using OpenTelemetry Collector  
+- 🚨 Detect anomalies: brute-force attempts, port scans, latency spikes  
+- 🖥️ Visualization: throughput, error rates, protocol distribution  
+
+## 🛠️ Tools & Technologies
+- **Wireshark** – GUI for packet inspection  
+- **tcpdump** – CLI packet capture utility  
+- **SigNoz** – Observability & dashboards (self-hosted Grafana-like)  
+- **OpenTelemetry Collector** – Unified telemetry ingestion  
+- **Docker Compose** – Orchestration for local deployment  
+- **Ubuntu Server 20.04** – Testing environment  
+
+## 🚀 Usage
+1. Clone this repository:
+```bash
+```
 ---
+Start the observability stack (SigNoz + Otel Collector):
+docker-compose up -d
 
-## 📌 Project Overview
+Capture live traffic using tcpdump:
+sudo tcpdump -i eth0 -w traffic.pcap
 
-Network visibility is a crucial component of modern cybersecurity. This project integrates packet-level inspection using Wireshark and end-to-end observability using SigNoz to monitor and analyze:
+Import captured packets into Wireshark:
+wireshark traffic.pcap
 
-- Suspicious communication patterns
-- Latency and packet drop spikes
-- Protocol misuse
-- Live telemetry for microservices and endpoints
+Open SigNoz dashboards at:
+http://localhost:3000
 
----
+## 📂 Project Structure
+- network-monitoring/
+- ├── docker-compose.yml        # Observability stack (SigNoz + Otel)
+- ├── otel-config.yaml          # OpenTelemetry collector config
+- ├── capture-script.sh         # Automated tcpdump wrapper
+- ├── README.md                 # Documentation
+- ├── docs/
+- │   └── security-report.md    # Detailed report
+- └── images/
+-     └── signoz-dashboard.png
+-     └── wireshark-capture.png
 
-## 🔧 Tools & Technologies
 
-- **Wireshark** – GUI tool for deep packet inspection  
-- **tcpdump** – CLI-based packet capturing  
-- **SigNoz** – Telemetry monitoring and visualization  
-- **OpenTelemetry Collector** – Unified telemetry pipeline  
-- **Docker Compose** – SigNoz deployment  
-- **Ubuntu Server 20.04** – Test environment
+## 📘 Documentation
+See [docs/security-report.md](./docs/security-report.md) for:
+- Network observability architecture  
+- Telemetry flow & detection methods  
+- Compliance mapping (e.g., NIST SI-4)  
+- Safe deployment & testing guidelines  
 
----
+## 🔮 Future Enhancements
+- 📢 Add alerting system (e.g., email/Slack alerts on anomalies)  
+- 🛡️ Integrate IDS tools (Suricata or Zeek) for deeper threat detection  
+- 📑 Centralize logs with ELK stack or Grafana Loki  
+- ☁️ Cloud-native deployment (Kubernetes + Helm charts)  
 
-## 🧩 Key Activities
+## 👤 Author
+**Rakshana Kannaya Muralidharan**  
+Master of Cybersecurity | Cloud Security & Observability Enthusiast  
 
-- ✅ Captured and dissected network traffic with Wireshark and tcpdump  
-- ✅ Integrated SigNoz with OpenTelemetry to stream trace and metrics data  
-- ✅ Developed dashboards to monitor:
-  - Network latency and throughput
-  - Request rate anomalies
-  - Protocol usage distribution
-- ✅ Identified potential malicious behaviors such as:
-  - Port scanning
-  - Brute-force login attempts
-  - Unusual destination IPs
+🔗 [GitHub](https://github.com/rakshana-cloudsec) • [LinkedIn](#)
 
----
-
-## 👩‍💻 Author
-
-Rakshana Kannaya Muralidharan  
-Master of Cybersecurity – RMIT University  
