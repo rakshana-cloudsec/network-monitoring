@@ -24,15 +24,9 @@ The goal is to enhance **network visibility**, detect **suspicious anomalies**, 
 
 ## 🚀 Usage
 1. Clone this repository:
----
-Start the observability stack (SigNoz + Otel Collector):
-docker-compose up -d
-
-Capture live traffic using tcpdump:
-sudo tcpdump -i eth0 -w traffic.pcap
-
-Import captured packets into Wireshark:
-wireshark traffic.pcap
+2. Start the observability stack (SigNoz + Otel Collector): docker-compose up -d
+3. Capture live traffic using tcpdump: sudo tcpdump -i eth0 -w traffic.pcap
+4. Import captured packets into Wireshark: wireshark traffic.pcap
 
 Open SigNoz dashboards at:
 http://localhost:3000
