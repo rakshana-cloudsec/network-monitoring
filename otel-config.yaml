@@ -1,0 +1,26 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+
+exporters:
+  logging:
+    loglevel: debug
+  signoz:
+    endpoint: "http://signoz-frontend:3000"
+
+processors:
+  batch:
+    timeout: 5s
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [logging, signoz]
+      processors: [batch]
+    metrics:
+      receivers: [otlp]
+      exporters: [logging, signoz]
+      processors: [batch]
