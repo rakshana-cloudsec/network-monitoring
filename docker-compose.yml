@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  signoz-otel-collector:
+    image: signoz/signoz-otel-collector:latest
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    volumes:
+      - ./otel-config.yaml:/etc/otel-collector-config.yaml
+    ports:
+      - "4317:4317"   # OTLP gRPC
+      - "4318:4318"   # OTLP HTTP
+    networks:
+      - observability
+
+  signoz-frontend:
+    image: signoz/signoz-frontend:latest
+    ports:
+      - "3000:3000"
+    networks:
+      - observability
+    depends_on:
+      - signoz-otel-collector
+
+networks:
+  observability:
+    driver: bridge
